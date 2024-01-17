@@ -59,8 +59,8 @@ class InputGenerator:
 
 if __name__ == "__main__":
     generator = InputGenerator("minesweeper_input.txt")
-    # generator.input_generator()
-    generator.mine_fields_generator(3)
+    generator.input_generator()
+    # generator.mine_fields_generator(3)
     generator.ending_input()
     generator.write_output()
     print(generator.output)
