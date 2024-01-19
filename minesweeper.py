@@ -162,11 +162,10 @@ class MineSweeper:
 
 
 if __name__ == '__main__':
-    mine = MineSweeper('minesweeper_input.txt', 'minesweeper_output.txt')
+    mine = MineSweeper('mines.txt', 'minesweeper_output.txt')
     mine.read_input()
     print(mine.output)
     mine.write_output()
-
 
 
 
