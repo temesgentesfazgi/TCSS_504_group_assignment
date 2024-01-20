@@ -4,15 +4,15 @@ import unittest
 
 class TestMinesweeper(unittest.TestCase):
     def setUp(self):
-        self.mine_sweeper = MineSweeper("minesweeper_input_ya.txt", "minesweeper_output.txt")
+        self.mine_sweeper = MineSweeper("minesweeper_input.txt", "minesweeper_output.txt")
 
     def test_minesweeper_obj(self):
-        m = MineSweeper("minesweeper_input_ya.txt", "minesweeper_output.txt")
+        m = MineSweeper("minesweeper_input.txt", "minesweeper_output.txt")
         self.assertEqual(type(m) == MineSweeper, True,
                          "Constructor should create Minesweeper object")
 
     def test_input_format(self):
-        mine_sweeper = MineSweeper('minesweeper_input_ya.txt', 'minesweeper_output.txt')
+        mine_sweeper = MineSweeper('minesweeper_input.txt', 'minesweeper_output.txt')
         mine_sweeper.read_input()
 
         # Update the expected field count to 14
@@ -23,7 +23,7 @@ class TestMinesweeper(unittest.TestCase):
 
     def test_output_format(self):
         # Set up the mine sweeper with example input and output file paths
-        mine_sweeper = MineSweeper("minesweeper_input_ya.txt", "minesweeper_output.txt")
+        mine_sweeper = MineSweeper("minesweeper_input.txt", "minesweeper_output.txt")
 
         # Read input and generate output
         mine_sweeper.read_input()
@@ -41,7 +41,7 @@ class TestMinesweeper(unittest.TestCase):
 
     def test_read_single_minefield(self):
         # Create an instance of MineSweeper
-        mine_sweeper = MineSweeper('minesweeper_input_ya.txt', 'minesweeper_output.txt')
+        mine_sweeper = MineSweeper('minesweeper_input.txt', 'minesweeper_output.txt')
 
         # Call the read_input method to read a single minefield
         mine_sweeper.read_input()
@@ -84,8 +84,8 @@ class TestMinesweeper(unittest.TestCase):
 
     def test_check_mine_single_row(self):
         # Test case for a single-row minefield
-        input_minefield = [['.', '.', '*']]
-        expected_output = "..*\n\n"
+        input_minefield = [['.', '.', '.', '*']]
+        expected_output = "...*\n\n"
         self.mine_sweeper.check_mine(input_minefield)
         self.assertEqual(self.mine_sweeper.get_output(), expected_output)
 
@@ -114,6 +114,17 @@ class TestMinesweeper(unittest.TestCase):
         expected_output = ".....\n.....\n.....\n.....\n.....\n\n"
         self.mine_sweeper.check_mine(input_minefield)
         self.assertEqual(self.mine_sweeper.get_output(), expected_output)
+
+    def test_1x1_output(self):
+        m = MineSweeper("minesweeper_input.txt", "minesweeper_output.txt")
+        m.read_input()
+        check_output = "Field #1 :\n0001*\n00011\n\nField #2 :\n000\n\nField #3 :\n0\n\nField #4 :\n0\n\nField #5 :\n01\n*2\n2*\n22\n1*\n\n"
+        self.assertEqual(check_output, m.get_output(), True)
+
+    def test_hint_producing_code(self):
+        field = ["****", "****", "****", "****"]
+        self.mine_sweeper.check_mine(field)
+        self.assertEqual(self.mine_sweeper.get_output(), "****\n****\n****\n****\n\n")
 
 
 
