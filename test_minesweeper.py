@@ -12,9 +12,9 @@ class TestMinesweeper(unittest.TestCase):
                          "Constructor should create Minesweeper object")
 
     def test_1x1_output(self):
-        m = MineSweeper("minesweeper_input.txt", "minesweeper_output.txt")
+        m = MineSweeper("minesweeper_input_ya.txt", "minesweeper_output.txt")
         m.read_input()
-        check_output = "Field #1 :\n*\n\n"
+        check_output = "Field #1 :\n0001*\n00011\n\nField #2 :\n000\n\nField #3 :\n0\n\nField #4 :\n0\n\nField #5 :\n01\n*2\n2*\n22\n1*\n\n"
         self.assertEqual(check_output, m.get_output(), True)
 
     def test_hint_producing_code(self):
