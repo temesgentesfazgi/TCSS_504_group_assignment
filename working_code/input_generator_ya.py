@@ -39,4 +39,4 @@ def generate_mines_file(filename, num_fields=5, max_dimension=10):
                 file.write(line + '\n')
 
 if __name__ == "__main__":
-    generate_mines_file("minesweeper_input.txt", num_fields=5, max_dimension=10)
+    generate_mines_file("minesweeper_input.txt", num_fields=5, max_dimension=5)
